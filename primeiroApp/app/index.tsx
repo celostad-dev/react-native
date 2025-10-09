@@ -1,30 +1,32 @@
 import React, { Component } from 'react';
-import { View, Text, Image } from 'react-native'; 
+import { View, Text, StyleSheet } from 'react-native'; 
 
 class App extends Component{
   render(){
-
-    let nome = 'Matheus';
-    let img = 'https://sujeitoprogramador.com/steve.png'
-
     return(
-      <View>
-        <Text>Olá Mundo!!!!</Text>
-        <Text>Meu Primeiro App</Text>    
-        <Text style={{ color: '#FF0000', fontSize: 25, margin: 15 }}>
-          Sujeito Programador
-        </Text>
+      <View style={styles.area} >
 
-        <Image 
-          source={{ uri: img }}
-          style={{ width: 300, height: 300 }}
-        />
-
-        <Text style={{ fontSize: 30 }}> {nome} </Text>
+        <Text style={[ styles.textoPrincipal, styles.alinhaTexto ]}>Eu sou texto 1</Text>
+        <Text style={styles.alinhaTexto}>Eu sou texto 2</Text>
+        <Text>Eu sou texto 3</Text>
+        <Text style={styles.textoPrincipal}>Eu sou texto 4</Text>
 
       </View>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  area:{
+    marginTop: 40
+  },
+  textoPrincipal:{
+    fontSize: 25,
+    color: '#FF0000'
+  },
+  alinhaTexto:{
+    textAlign: 'center'
+  }
+});
 
 export default App;
