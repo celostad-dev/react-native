@@ -24,8 +24,8 @@ class App extends Component {
           descricao: 'Mais um dia de muitos bugs :)', 
           imgperfil: 'https://sujeitoprogramador.com/instareact/fotoPerfil1.png', 
           imgPublicacao: 'https://sujeitoprogramador.com/instareact/foto1.png',  
-          likeada: false, 
-          likers: 0
+          likeada: true, 
+          likers: 1
          },
         {
           id: '2', 
@@ -115,7 +115,6 @@ const styles = StyleSheet.create({
     borderBottomWidth: 0.2,
     shadowColor: '#000',
     elevation: 1,
-    marginTop: 25,
   },
   send:{
     width: 23,
