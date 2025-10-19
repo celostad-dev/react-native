@@ -8,7 +8,7 @@ import {
   Keyboard
   } from 'react-native';
 
-  //Para instalar: npm install @react-native-async-storage/async-storage​
+  //Para instalar: npm install @react-native-async-storage/async-storage --save
   import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default class App extends Component{
