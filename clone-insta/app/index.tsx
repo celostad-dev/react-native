@@ -90,6 +90,7 @@ class App extends Component {
 
       <FlatList
       showsHorizontalScrollIndicator={false}
+      keyExtractor={(item) => item.id}
       data={this.state.feed}
       renderItem={ ({item}) => <Lista data={item} /> }
       />
@@ -114,6 +115,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: 0.2,
     shadowColor: '#000',
     elevation: 1,
+    marginTop: 25,
   },
   send:{
     width: 23,
