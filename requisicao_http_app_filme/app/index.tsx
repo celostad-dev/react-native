@@ -1,5 +1,5 @@
 import React, { useEffect, useState, Component } from 'react';
-import {View,Text,StyleSheet, FlatList} from 'react-native';
+import {View,Text,StyleSheet, FlatList, ActivityIndicator} from 'react-native';
 
 import api from '../src/services/api';
 import Filmes from '../src/Filmes';
@@ -7,40 +7,45 @@ import Filmes from '../src/Filmes';
 export default function App() {
 
   const [filmes, setFilmes] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(()=> {
     async function loadFilmes(){
       const response = await api.get('r-api/?api=filmes');
       // console.log(response.data);
       setFilmes(response.data);
+      setLoading(false);
     }
 
     loadFilmes();
   }, []);
 
+  if(loading){
+    return(
+      <View style={{ alignItems: 'center', justifyContent: 'center', flex: 1}}>
+        <ActivityIndicator color="#121212" size={45} />
+      </View>
+    )
+  }else{
+    return (
+        <View style={styles.container} >
 
-  return (
-      <View style={styles.container} >
+          <FlatList 
+          data={filmes}
+          keyExtractor={ item => String(item.id) }
+          renderItem={ ({ item }) => <Filmes data={item} /> }        
+          />
 
-        <FlatList 
-        data={filmes}
-        keyExtractor={ item => String(item.id) }
-        renderItem={ ({ item }) => <Filmes data={item} /> }        
-        />
-
-      </View>    
-    );
-  
+        </View>    
+      );
+    } 
 }
 
 const styles = StyleSheet.create({
   container:{
     flex:1,
-    marginTop: 40,
-    paddingLeft:20,
-    // alignItems: 'center',
-    // justifyContent: 'center',
-    // backgroundColor: '#DDD',
+    // marginTop: 40,
+    // paddingLeft:20,
   },
   
 });
